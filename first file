@@ -12,6 +12,10 @@ public class Main {
             for(int i = 0; i < boxLocations.length; i++) {
                 boxLocations[i] = random.nextInt(7) + 1;
             }
+            
+            System.out.println("The Martians lost the map, and you need to help them guess the cargo's location.");
+            System.out.println("They hid their cargo in three different places.");
+            System.out.println("You have five attempts before the cargo moves to another location.");
 
             indicateKilometer(boxLocations, scanner, random);
 
@@ -55,9 +59,6 @@ public class Main {
                 boxLocations[i] = random.nextInt(7) + 1;
             }
 
-            for (int i = 0; i < boxLocations.length; i++) {
-                System.out.print(boxLocations[i] + " ");
-            }
             } 
                  
             }
@@ -72,4 +73,3 @@ public class Main {
         System.out.flush();
     }
 }
-
