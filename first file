@@ -25,3 +25,34 @@ public class Main
 		    indicatKilometer(A, B, C, boxLocations, scanner);
 	}
 	
+	public static void indicatKilometer(int A, int B, int C, int[] boxLocations, Scanner scanner) {
+	    int attempts = 5;
+	
+	    while (attempts > 0) {
+	    int[] guessLocations = new int[3];
+	    System.out.println("\nEnter your guesses:");
+	    
+	    for (int i = 0; i < guessLocations.length; i++) {
+            guessLocations[i] = scanner.nextInt();
+        }
+	    
+	    int correctGuesses = 0;
+
+        for (int i = 0; i < boxLocations.length; i++) {
+            if (boxLocations[i] == guessLocations[i]) {
+                correctGuesses++;
+            }
+        }
+
+        if (correctGuesses == 3) {
+            System.out.println("Congratulations, all boxes were found!");
+            }
+            else{
+                System.out.println("Number of correctly guessed kilometer marks: " + correctGuesses);
+                }
+        attempts--;
+	    }
+    }
+}
+
+	
