@@ -13,10 +13,6 @@ public class Main {
                 boxLocations[i] = random.nextInt(7) + 1;
             }
 
-            for (int i = 0; i < boxLocations.length; i++) {
-                System.out.print(boxLocations[i] + " ");
-            }
-
             indicateKilometer(boxLocations, scanner, random);
 
         System.out.println("Thank you for helping find valuable cargo!");
@@ -76,3 +72,4 @@ public class Main {
         System.out.flush();
     }
 }
+
