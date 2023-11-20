@@ -15,7 +15,9 @@ public class Main
 		    
 		    for(int i = 0; i < boxLocations.length; i++) {
 		        randomKilometr = random.nextInt(7) + i;
+		        if (randomKilometr > 0) {
 		        boxLocations[i] = randomKilometr;
+		        }
 		    }
 		
 		    for (int i = 0; i < boxLocations.length; i++) {
@@ -26,15 +28,19 @@ public class Main
 	}
 	
 	public static void indicatKilometer(int A, int B, int C, int[] boxLocations, Scanner scanner) {
-	    int attempts = 5;
-	
-	    while (attempts > 0) {
-	    int[] guessLocations = new int[3];
-	    System.out.println("\nEnter your guesses:");
+	     int maxAttempts = 5;
 	    
-	    for (int i = 0; i < guessLocations.length; i++) {
-            guessLocations[i] = scanner.nextInt();
-        }
+	     while (maxAttempts > 0) {
+	         int attempts = maxAttempts;
+	         
+	         while (attempts > 0) {
+	             System.out.println("\nEnter your guesses:");
+	             
+	         int checkA = scanner.nextInt();
+	         int checkB = scanner.nextInt();
+	         int checkC = scanner.nextInt();
+	         int[] guessLocations = new int[]{checkA, checkB, checkC};
+
 	    
 	    int correctGuesses = 0;
 
@@ -46,11 +52,20 @@ public class Main
 
         if (correctGuesses == 3) {
             System.out.println("Congratulations, all boxes were found!");
+            attempts = 0;
+            break;
             }
-            else{
+            else {
                 System.out.println("Number of correctly guessed kilometer marks: " + correctGuesses);
                 }
         attempts--;
+	    }
+	    if (attempts == 0) {
+            System.out.println("Sorry, you've run out of attempts. The boxes have moved.");
+            System.out.println("Restarting the process...");
+            
+	    }
+        
 	    }
     }
 }
