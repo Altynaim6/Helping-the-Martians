@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.Arrays;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		Random random = new Random();
+	        int A = random.nextInt();
+	        int B = random.nextInt();
+	        int C = random.nextInt();
+	        int[] boxLocations = new int[]{A, B, C};
+	   
+	    	int randomKilometr = 0;
+		    
+		    for(int i = 0; i < boxLocations.length; i++) {
+		        randomKilometr = random.nextInt(7) + i;
+		        boxLocations[i] = randomKilometr;
+		    }
+		
+		    for (int i = 0; i < boxLocations.length; i++) {
+		        System.out.print(boxLocations[i] + " ");
+		    }
+		
+		    indicatKilometer(A, B, C, boxLocations, scanner);
+	}
+	
