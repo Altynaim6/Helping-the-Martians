@@ -6,66 +6,58 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         
-        int attempts1 = 5;
-        while (attempts1 > 0) {
-            
-        int A = random.nextInt();
-        int B = random.nextInt();
-        int C = random.nextInt();
-        int[] boxLocations = new int[]{A, B, C};
-        
-        int randomKilometr = 0;
-		    for(int i = 0; i < boxLocations.length; i++) {
-		        randomKilometr = random.nextInt(7) + i;
-		        if (randomKilometr > 0) {
-		        boxLocations[i] = randomKilometr;
-		        }
-		    }
-		    for (int i = 0; i < boxLocations.length; i++) {
-            System.out.print(boxLocations[i] + " ");
+        int maxAttempts = 5;
+        while (maxAttempts > 0) {
+            int A = random.nextInt(7) + 1; 
+            int B = random.nextInt(7) + 1;
+            int C = random.nextInt(7) + 1;
+            int[] boxLocations = new int[]{A, B, C};
+
+            for (int i = 0; i < boxLocations.length; i++) {
+                System.out.print(boxLocations[i] + " ");
             }
-        
-        indicateKilometer(A, B, C, boxLocations, scanner);
-        
-        attempts1--;
+
+            indicateKilometer(A, B, C, boxLocations, scanner);
+
+            maxAttempts--;
         }
-        
+        System.out.println("Thank you for helping find valuable cargo!");
     }
 
     public static void indicateKilometer(int A, int B, int C, int[] boxLocations, Scanner scanner) {
-        int maxAttempts = 5;
+        int attempts = 3;
 
-        while (maxAttempts > 0) {
-            int attempts = maxAttempts;
-            while (attempts > 0) {
-                System.out.println("\nEnter your guesses:");
+        while (attempts > 0) {
+            System.out.println("\nEnter your guesses:");
 
-                int checkA = scanner.nextInt();
-                int checkB = scanner.nextInt();
-                int checkC = scanner.nextInt();
-                int[] guessLocations = new int[]{checkA, checkB, checkC};
+            int checkA = scanner.nextInt();
+            int checkB = scanner.nextInt();
+            int checkC = scanner.nextInt();
+            int[] guessLocations = new int[]{checkA, checkB, checkC};
 
-                int correctGuesses = 0;
+            int correctGuesses = 0;
 
-                for (int i = 0; i < boxLocations.length; i++) {
-                    if (boxLocations[i] == guessLocations[i]) {
-                        correctGuesses++;
-                    }
+            for (int i = 0; i < boxLocations.length; i++) {
+                if (boxLocations[i] == guessLocations[i]) {
+                    correctGuesses++;
                 }
-
-                if (correctGuesses == 3) {
-                    System.out.println("Congratulations, all boxes were found!");
-                    return;
-                } else {
-                    System.out.println("Number of correctly guessed kilometer marks: " + correctGuesses);
-                }
-
-                attempts--;
             }
 
-            System.out.println("Sorry, you've run out of attempts. The boxes have moved.");
-            System.out.println("Restarting the process...");
-            
+            if (correctGuesses == 3) {
+                System.out.println("Congratulations, all cargos were found!");
+                return;
+            } else {
+                System.out.println("Number of correctly guessed kilometer marks: " + correctGuesses);
+            }
+
+            attempts--;
         }
+        clearConsole();
+        System.out.println("Sorry, you've run out of attempts. The boxes have moved.");
+    }
+    
+    public static void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }
